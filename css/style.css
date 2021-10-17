@@ -44,6 +44,11 @@ body {
     text-transform: uppercase;
     font-size: .875rem;
     letter-spacing: .1em;
+    border-bottom: 3px solid #fb5;
+}
+
+.menu li a:hover {
+    border-bottom: 3px solid #000;
 }
 
 .grid-section {
@@ -176,6 +181,22 @@ body {
     font-weight: bold;
 }
 
+.up {
+    font-size: 2rem;
+    font-weight: bold;
+    background-color: #fb5;
+    color: #222;
+    height: 40px;
+    width: 40px;
+    position: fixed;
+    border-radius: 50%;
+    bottom: 35px;
+    right: 10px;
+    text-decoration: none;
+    text-align: center;
+    line-height: 35px;
+}
+
 @media (max-width: 700px) {
     body {
         grid-template-columns: 1fr;
@@ -204,5 +225,8 @@ body {
     }
     .copy {
         margin-bottom: 0px;
+    }
+    .up {
+        left: 10px;
     }
 }
