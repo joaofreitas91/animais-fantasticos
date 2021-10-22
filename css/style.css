@@ -35,7 +35,7 @@ body {
 
 .menu li a {
     display: block;
-    padding: 10px;
+    padding: 15px 10px;
     margin-right: 10px;
     color: #222;
     text-decoration: solid;
@@ -64,7 +64,7 @@ body {
 
 .titulo {
     font-family: 'Playfair Display SC', Georgia;
-    font-size: 6rem;
+    font-size: 5rem;
     line-height: 1;
     font-weight: 400;
     margin-bottom: 1rem;
@@ -101,6 +101,10 @@ body {
     grid-column: 2;
 }
 
+.animais-lista li {
+    cursor: pointer;
+}
+
 .animais-lista::-webkit-scrollbar {
     width: 10px;
 }
@@ -121,6 +125,26 @@ body {
 
 .animias-descricao section {
     margin-bottom: 3rem;
+}
+
+.js .js-tabcontent section {
+    display: none;
+}
+
+.js-tabcontent section.active {
+    display: block;
+    animation: show .5s forwards;
+}
+
+@keyframes show {
+    from {
+        transform: translate3d(-30px, 0, 0);
+        opacity: 0;
+    }
+    to {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
 }
 
 .faq-lista {
@@ -184,7 +208,7 @@ body {
 .up {
     font-size: 2rem;
     font-weight: bold;
-    background-color: #fb5;
+    background-color: #e54;
     color: #222;
     height: 40px;
     width: 40px;
