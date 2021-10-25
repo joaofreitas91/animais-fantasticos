@@ -136,6 +136,10 @@ body {
     animation: show .5s forwards;
 }
 
+.js-acordion-list dt {
+    cursor: pointer;
+}
+
 @keyframes show {
     from {
         transform: translate3d(-30px, 0, 0);
@@ -157,6 +161,7 @@ body {
     margin-top: 2rem;
     margin-bottom: .5rem;
     color: #e54;
+    cursor: pointer;
 }
 
 .faq-lista dt::before {
@@ -172,6 +177,36 @@ body {
     font-family: Helvetica, Arial;
     margin-bottom: .5rem;
     margin-left: 30px;
+}
+
+.js-accordion-list dt.disable::after {
+    content: '⬑';
+    margin-left: 10px;
+}
+
+.js-accordion-list dt::after {
+    content: '⬎';
+    margin-left: 10px;
+}
+
+.js .js-accordion-list dd {
+    display: block;
+}
+
+.js-accordion-list dd.disable {
+    display: none;
+    animation: slideDown .5s forwards;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        max-height: 0;
+    }
+    to {
+        opacity: 1;
+        max-height: 100px;
+    }
 }
 
 .mapa {
