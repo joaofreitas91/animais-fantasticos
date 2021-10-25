@@ -1,8 +1,38 @@
 window.addEventListener("load", () => {
-    yearFooter()
+    softScroll()
     initTabNav()
     initAccordionList()
+    goHome()
+    yearFooter()
 })
+
+const internalLinks = document.querySelectorAll('.js-menu a[href^="#"]');
+
+function scrollToSection(event) {
+    event.preventDefault();
+
+    const href = event.currentTarget.getAttribute('href');
+    const section = document.querySelector(href);
+
+    section.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+    });
+
+    //forma alternativa
+    /* const top = section.offsetTop;
+    window.scrollTo({
+        top: top,
+        behavior: 'smooth'
+    }); */
+
+}
+
+internalLinks.forEach((a) => a.addEventListener('click', scrollToSection));
+
+
+function softScroll() {
+}
 
 function initTabNav() {
     const tabMenu = document.querySelectorAll('.js-tabmenu li');
@@ -47,6 +77,20 @@ function initAccordionList() {
             this.classList.toggle(disableClass);
             this.nextElementSibling.classList.toggle(disableClass);
         }
+    }
+}
+
+function goHome() {
+
+    const buttonHome = document.querySelector('.up');
+    buttonHome.addEventListener('click', goToHome);
+
+    function goToHome(event) {
+        event.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        })
     }
 }
 
