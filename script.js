@@ -1,8 +1,8 @@
 window.addEventListener("load", () => {
+    initAnimationScroll()
     softScroll()
     initTabNav()
     initAccordionList()
-    initAnimationScroll()
     goHome()
     yearFooter()
 })
@@ -10,33 +10,36 @@ window.addEventListener("load", () => {
 function initAnimationScroll() {
 
     const sections = document.querySelectorAll('.js-scroll');
-    const viewHeight = window.innerHeight * 0.5;
-    const buttonHome = document.querySelector('.up');
 
-    function animationScroll() {
+    if (sections.length) {
+        const viewHeight = window.innerHeight * 0.5;
+        const buttonHome = document.querySelector('.up');
 
-        const faqTop = sections[0].getBoundingClientRect().top;
+        function animationScroll() {
 
-        if (faqTop < 0) {
-            buttonHome.classList.add('active')
-        } else {
-            buttonHome.classList.remove('active')
-        }
+            const faqTop = sections[0].getBoundingClientRect().top;
 
-        sections.forEach((section) => {
-            const sectionTop = section.getBoundingClientRect().top;
-            const isSectionVisible = (sectionTop - viewHeight) < 0;
-
-            if (isSectionVisible) {
-                section.classList.add('active');
+            if (faqTop > 0) {
+                buttonHome.classList.add('disable')
             } else {
-                section.classList.remove('active');
+                buttonHome.classList.remove('disable')
             }
-        });
-    }
-    animationScroll();
 
-    window.addEventListener('scroll', animationScroll);
+            sections.forEach((section) => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const isSectionVisible = (sectionTop - viewHeight) < 0;
+
+                if (isSectionVisible) {
+                    section.classList.add('active');
+                } else {
+                    section.classList.remove('active');
+                }
+            });
+        }
+        animationScroll();
+
+        window.addEventListener('scroll', animationScroll);
+    }
 }
 
 function softScroll() {
@@ -110,7 +113,6 @@ function initAccordionList() {
         }
     }
 }
-
 
 function goHome() {
 
