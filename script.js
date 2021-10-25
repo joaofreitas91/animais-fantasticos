@@ -2,36 +2,67 @@ window.addEventListener("load", () => {
     softScroll()
     initTabNav()
     initAccordionList()
+    initAnimationScroll()
     goHome()
     yearFooter()
 })
 
-const internalLinks = document.querySelectorAll('.js-menu a[href^="#"]');
+function initAnimationScroll() {
 
-function scrollToSection(event) {
-    event.preventDefault();
+    const sections = document.querySelectorAll('.js-scroll');
+    const viewHeight = window.innerHeight * 0.5;
+    const buttonHome = document.querySelector('.up');
 
-    const href = event.currentTarget.getAttribute('href');
-    const section = document.querySelector(href);
+    function animationScroll() {
 
-    section.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-    });
+        const faqTop = sections[0].getBoundingClientRect().top;
 
-    //forma alternativa
-    /* const top = section.offsetTop;
-    window.scrollTo({
-        top: top,
-        behavior: 'smooth'
-    }); */
+        if (faqTop < 0) {
+            buttonHome.classList.add('active')
+        } else {
+            buttonHome.classList.remove('active')
+        }
 
+        sections.forEach((section) => {
+            const sectionTop = section.getBoundingClientRect().top;
+            const isSectionVisible = (sectionTop - viewHeight) < 0;
+
+            if (isSectionVisible) {
+                section.classList.add('active');
+            } else {
+                section.classList.remove('active');
+            }
+        });
+    }
+    animationScroll();
+
+    window.addEventListener('scroll', animationScroll);
 }
 
-internalLinks.forEach((a) => a.addEventListener('click', scrollToSection));
-
-
 function softScroll() {
+    const internalLinks = document.querySelectorAll('.js-menu a[href^="#"]');
+
+    function scrollToSection(event) {
+        event.preventDefault();
+
+        const href = event.currentTarget.getAttribute('href');
+        const section = document.querySelector(href);
+
+        section.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+
+        //forma alternativa
+        /* const top = section.offsetTop;
+        window.scrollTo({
+            top: top,
+            behavior: 'smooth'
+        }); */
+
+    }
+
+    internalLinks.forEach((a) => a.addEventListener('click', scrollToSection));
 }
 
 function initTabNav() {
@@ -79,6 +110,7 @@ function initAccordionList() {
         }
     }
 }
+
 
 function goHome() {
 
