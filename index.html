@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
@@ -16,27 +16,26 @@
     <title>Animais Fantásticos</title>
 </head>
 
-
 <body>
-    <nav class="menu js-menu" id="menu">
+    <nav class="menu" data-menu="soft" id="menu">
         <ul>
-            <li><a href="#animais">Animais</a></li>
+            <li><a href="#animals">Animais</a></li>
             <li><a href="#faq">FAQ</a></li>
-            <li><a href="#contato">Contato</a></li>
+            <li><a href="#contact">Contato</a></li>
             <li><a href="https://github.com/joaofreitas91/animais-fantasticos" target="_blank">Meu Git</a></li>
         </ul>
     </nav>
-    <section class="grid-section animais js-scroll" id="animais">
-        <h1 class="titulo">Animais Fantásticos</h1>
-        <ul class="animais-lista js-tabmenu">
-            <li><img src="img/imagem1.jpg"></li>
-            <li><img src="img/imagem2.jpg"></li>
-            <li><img src="img/imagem3.jpg"></li>
-            <li><img src="img/imagem4.jpg"></li>
-            <li><img src="img/imagem5.jpg"></li>
-            <li><img src="img/imagem6.jpg"></li>
+    <section class="grid-section animals" data-anime="scroll" id="animals">
+        <h1 class="title" data-width="100px">Animais Fantásticos</h1>
+        <ul class="list-animals" data-tab="menu">
+            <li><img src="img/image1.jpg" alt="Raposa"></li>
+            <li><img src="img/image2.jpg" alt="Esquilo"></li>
+            <li><img src="img/image3.jpg" alt="Urso"></li>
+            <li><img src="img/image4.jpg" alt="Lobo"></li>
+            <li><img src="img/image5.jpg" alt="Macaco"></li>
+            <li><img src="img/image6.jpg" alt="Leão"></li>
         </ul>
-        <div class="animias-descricao js-tabcontent">
+        <div class="animals-description" data-tab="content">
             <section>
                 <h2>Raposa</h2>
                 <p>
@@ -177,9 +176,9 @@
             </section>
         </div>
     </section>
-    <section class="grid-section faq js-scroll" id="faq">
-        <h1 class="titulo">FAQ</h1>
-        <dl class="faq-lista js-accordion-list">
+    <section class="grid-section faq" data-anime="scroll" id="faq">
+        <h1 class="title">FAQ</h1>
+        <dl class="faq-lista" data-anime="accordion-list">
             <dt>Qual a idade dos animais?</dt>
             <dd>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Adipisci, dignissimos.</dd>
             <dt>Eles são Fantásticos?</dt>
@@ -191,12 +190,12 @@
         </dl>
 
     </section>
-    <section class="grid-section contato js-scroll" id="contato">
-        <h1 class="titulo">Contato</h1>
-        <div class="mapa">
-            <img src="img/mapa.png">
+    <section class="grid-section contact" data-anime="scroll" id="contact">
+        <h1 class="title">Contato</h1>
+        <div class="map">
+            <img src="img/map.png" alt="mapa">
         </div>
-        <ul class="dados">
+        <ul class="data">
             <li>logo@logo.meulinkedin.com</li>
             <li>+55 (21) 99999-9999</li>
             <li>Rua do Conde, nº 99</li>
@@ -204,7 +203,7 @@
         </ul>
     </section>
     <section>
-        <div><a href="#menu" class="up">▲</a></div>
+        <div><a href="#menu" class="up" data-anime="go-home">▲</a></div>
     </section>
     <footer class="copy">
     </footer>

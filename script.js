@@ -1,33 +1,31 @@
-window.addEventListener("load", () => {
-    initAnimationScroll()
-    softScroll()
-    initTabNav()
-    initAccordionList()
-    goHome()
-    yearFooter()
-})
+window.addEventListener('load', () => {
+    initAnimationScroll();
+    softScroll();
+    initTabNav();
+    initAccordionList();
+    goHome();
+    yearFooter();
+});
 
 function initAnimationScroll() {
-
-    const sections = document.querySelectorAll('.js-scroll');
+    const sections = document.querySelectorAll('[data-anime="scroll"]');
 
     if (sections.length) {
         const viewHeight = window.innerHeight * 0.5;
-        const buttonHome = document.querySelector('.up');
+        const buttonHome = document.querySelector('[data-anime="go-home"]');
 
         function animationScroll() {
-
             const faqTop = sections[0].getBoundingClientRect().top;
 
             if (faqTop > 0) {
-                buttonHome.classList.add('disable')
+                buttonHome.classList.add('disable');
             } else {
-                buttonHome.classList.remove('disable')
+                buttonHome.classList.remove('disable');
             }
 
             sections.forEach((section) => {
                 const sectionTop = section.getBoundingClientRect().top;
-                const isSectionVisible = (sectionTop - viewHeight) < 0;
+                const isSectionVisible = sectionTop - viewHeight < 0;
 
                 if (isSectionVisible) {
                     section.classList.add('active');
@@ -43,7 +41,9 @@ function initAnimationScroll() {
 }
 
 function softScroll() {
-    const internalLinks = document.querySelectorAll('.js-menu a[href^="#"]');
+    const internalLinks = document.querySelectorAll(
+        '[data-menu="soft"] a[href^="#"]'
+    );
 
     function scrollToSection(event) {
         event.preventDefault();
@@ -53,7 +53,7 @@ function softScroll() {
 
         section.scrollIntoView({
             behavior: 'smooth',
-            block: 'start'
+            block: 'start',
         });
 
         //forma alternativa
@@ -62,15 +62,25 @@ function softScroll() {
             top: top,
             behavior: 'smooth'
         }); */
-
     }
 
     internalLinks.forEach((a) => a.addEventListener('click', scrollToSection));
 }
 
 function initTabNav() {
-    const tabMenu = document.querySelectorAll('.js-tabmenu li');
-    const tabContent = document.querySelectorAll('.js-tabcontent section');
+    const tabMenu = document.querySelectorAll('[data-tab="menu"] li');
+    const tabContent = document.querySelectorAll(
+        '[data-tab="content"] section'
+    );
+    const sections = document.querySelectorAll('.animals-description section');
+
+    sections.forEach((animal, index) => {
+        if (index % 2 === 0) {
+            animal.dataset.anime = 'show-down';
+        } else {
+            animal.dataset.anime = 'show-right';
+        }
+    });
 
     if (tabMenu.length && tabContent.length) {
         tabContent[0].classList.add('active');
@@ -84,17 +94,19 @@ function initTabNav() {
         function activeTab(index) {
             tabContent.forEach((section) => {
                 section.classList.remove('active');
-            })
-            tabContent[index].classList.add('active');
+            });
+            const dataset = tabContent[index].dataset.anime;
+            tabContent[index].classList.add('active', dataset);
         }
     }
 }
 
 function initAccordionList() {
-    const accordionList = document.querySelectorAll('.js-accordion-list dt');
+    const accordionList = document.querySelectorAll(
+        '[data-anime="accordion-list"] dt'
+    );
 
     if (accordionList.length) {
-
         const disableClass = 'disable';
 
         accordionList.forEach((item) => {
@@ -105,7 +117,9 @@ function initAccordionList() {
         accordionList[0].classList.remove(disableClass);
         accordionList[0].nextElementSibling.classList.remove(disableClass);
 
-        accordionList.forEach((question) => question.addEventListener('click', toggleAnswer));
+        accordionList.forEach((question) =>
+            question.addEventListener('click', toggleAnswer)
+        );
 
         function toggleAnswer() {
             this.classList.toggle(disableClass);
@@ -115,16 +129,15 @@ function initAccordionList() {
 }
 
 function goHome() {
-
-    const buttonHome = document.querySelector('.up');
+    const buttonHome = document.querySelector('[data-anime="go-home"]');
     buttonHome.addEventListener('click', goToHome);
 
     function goToHome(event) {
         event.preventDefault();
         window.scrollTo({
             top: 0,
-            behavior: 'smooth'
-        })
+            behavior: 'smooth',
+        });
     }
 }
 
@@ -138,4 +151,3 @@ function yearFooter() {
 
     footer.appendChild(paragraphFooter);
 }
-

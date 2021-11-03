@@ -1,4 +1,19 @@
-body, h1, h2, h3, ul, li, p, dd, dt, dl {
+[data-color] {
+    background-color: blue;
+}
+[data-font-color] {
+    color: red;
+}
+body,
+h1,
+h2,
+h3,
+ul,
+li,
+p,
+dd,
+dt,
+dl {
     margin: 0;
     padding: 0;
 }
@@ -43,8 +58,8 @@ body {
     font-family: 'IBM Plex Mono', monospace;
     font-weight: bold;
     text-transform: uppercase;
-    font-size: .875rem;
-    letter-spacing: .1em;
+    font-size: 0.875rem;
+    letter-spacing: 0.1em;
     border-bottom: 3px solid #fb5;
 }
 
@@ -68,18 +83,18 @@ body {
     margin-bottom: 4rem;
 }
 
-.js .js-scroll {
+.js [data-anime='scroll'] {
     opacity: 0;
-    transition: .3s;
+    transition: 0.3s;
     transform: translate3d(-30px, 0, 0);
 }
 
-.js .js-scroll.active {
+.js [data-anime='scroll'].active {
     opacity: 1;
     transform: translate3d(0, 0, 0);
 }
 
-.titulo {
+.title {
     font-family: 'Playfair Display SC', Georgia;
     font-size: 5rem;
     line-height: 1;
@@ -88,16 +103,16 @@ body {
     grid-column: 1/4;
 }
 
-.animais h2 {
+.animals h2 {
     font-family: 'IBM Plex Mono' monospace;
     font-size: 1rem;
     text-transform: uppercase;
-    letter-spacing: .1em;
+    letter-spacing: 0.1em;
     margin-bottom: 1rem;
     color: #e54;
 }
 
-.animais h2::before {
+.animals h2::before {
     content: '';
     display: inline-block;
     width: 40px;
@@ -106,58 +121,59 @@ body {
     background-color: #fb5;
 }
 
-.animais p {
+.animals p {
     font-family: Helvetica, Arial, sans-serif;
     line-height: 1.2;
     margin-bottom: 1rem;
 }
 
-.animais-lista {
+.list-animals {
     height: 370px;
     overflow-y: scroll;
     grid-column: 2;
 }
 
-.animais-lista li {
+.list-animals li {
     cursor: pointer;
 }
 
-.animais-lista::-webkit-scrollbar {
+.list-animals::-webkit-scrollbar {
     width: 10px;
 }
 
-.animais-lista::-webkit-scrollbar-thumb {
+.list-animals::-webkit-scrollbar-thumb {
     background-color: #fb5;
     border-left: 2px solid #faf6ed;
     border-right: 2px solid #faf6ed;
 }
 
-.animais-lista::-webkit-scrollbar-track {
+.list-animals::-webkit-scrollbar-track {
     background-color: #faf6ed;
 }
 
-.animias-descricao {
+.animals-description {
     grid-column: 3;
 }
 
-.animias-descricao section {
+.animals-description section {
     margin-bottom: 3rem;
 }
 
-.js .js-tabcontent section {
+.js [data-tab='content'] section {
     display: none;
 }
 
-.js-tabcontent section.active {
+[data-tab='content'] section.active {
     display: block;
-    animation: show .5s forwards;
+}
+[data-tab='content'] section.active.show-down {
+    animation: show-down 0.5s forwards;
+}
+[data-tab='content'] section.active.show-right {
+    animation: show-right 0.5s forwards;
 }
 
-.js-acordion-list dt {
-    cursor: pointer;
-}
-
-@keyframes show {
+@keyframes show-right {
     from {
         transform: translate3d(-30px, 0, 0);
         opacity: 0;
@@ -168,6 +184,21 @@ body {
     }
 }
 
+@keyframes show-down {
+    from {
+        transform: translate3d(0, -30px, 0);
+        opacity: 0;
+    }
+    to {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
+}
+
+.js-acordion-list dt {
+    cursor: pointer;
+}
+
 .faq-lista {
     grid-column: 2/4;
 }
@@ -176,7 +207,7 @@ body {
     font-family: 'IBM Plex Mono' monospace;
     font-weight: bold;
     margin-top: 2rem;
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
     color: #e54;
     cursor: pointer;
 }
@@ -192,27 +223,27 @@ body {
 
 .faq-lista dd {
     font-family: Helvetica, Arial;
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
     margin-left: 30px;
 }
 
-.js-accordion-list dt.disable::after {
+[data-anime='accordion-list'] dt.disable::after {
     content: '⬑';
     margin-left: 10px;
 }
 
-.js-accordion-list dt::after {
+[data-anime='accordion-list'] dt::after {
     content: '⬎';
     margin-left: 10px;
 }
 
-.js .js-accordion-list dd {
+.js [data-anime='accordion-list'] dd {
     display: block;
 }
 
-.js-accordion-list dd.disable {
+[data-anime='accordion-list'] dd.disable {
     display: none;
-    animation: slideDown .5s forwards;
+    animation: slideDown 0.5s forwards;
 }
 
 @keyframes slideDown {
@@ -226,20 +257,20 @@ body {
     }
 }
 
-.mapa {
+.map {
     grid-column: 2;
 }
 
-.dados {
+.data {
     grid-column: 3;
 }
 
-.dados li {
+.data li {
     margin-bottom: 1rem;
     font-family: Helvetica, Arial;
 }
 
-.dados li::before {
+.data li::before {
     content: '';
     display: inline-block;
     width: 20px;
@@ -283,7 +314,9 @@ body {
     body {
         grid-template-columns: 1fr;
     }
-    .menu, .grid-section, .copy {
+    .menu,
+    .grid-section,
+    .copy {
         grid-column: 1;
     }
     .grid-section {
@@ -293,13 +326,15 @@ body {
     .grid-section h1 {
         font-size: 3rem;
     }
-    .animais-lista {
+    .list-animals {
         grid-column: 1;
     }
-    .animias-descricao {
+    .animals-description {
         grid-column: 2;
     }
-    .faq-lista, .dados, .mapa {
+    .faq-lista,
+    .data,
+    .map {
         grid-column: 2/4;
     }
     .menu {
