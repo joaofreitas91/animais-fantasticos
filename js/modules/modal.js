@@ -1,16 +1,24 @@
-export default function openModal() {
-    const btnLogin = document.querySelector('.menu li:last-child a');
-    const btnCloseModal = document.querySelector('.close-modal');
-    const modal = document.querySelector('.modal-container');
+export default function initModal() {
+    const modal = document.querySelector('[data-modal="container"]');
+    const btnLoginDesktop = document.querySelector(
+        '[data-modal="open-desktop"]'
+    );
+    const btnLoginMobile = document.querySelector('[data-modal="open-mobile"]');
+    const btnCloseModal = document.querySelector('[data-modal="close"]');
 
-    btnLogin.addEventListener('click', open);
-    btnCloseModal.addEventListener('click', close);
-
-    function open(event) {
+    function toggle(event) {
         event.preventDefault();
-        modal.classList.add('active');
+        modal.classList.toggle('active');
     }
-    function close() {
-        modal.classList.remove('active');
+
+    function closeModalOutside(event) {
+        if (event.target === this) {
+            modal.classList.remove('active');
+        }
     }
+
+    modal.addEventListener('click', closeModalOutside);
+    btnLoginDesktop.addEventListener('click', toggle);
+    btnLoginMobile.addEventListener('click', toggle);
+    btnCloseModal.addEventListener('click', toggle);
 }

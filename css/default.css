@@ -58,9 +58,8 @@ body {
     border-bottom: 3px solid var(--orange);
 }
 
-.menu li:last-child a::after {
-    content: '→';
-    margin-left: 6px;
+.menu li:nth-child(6) a {
+    display: none;
 }
 
 .menu li a:hover {
@@ -256,6 +255,7 @@ body {
 
 .map {
     grid-column: 2;
+    padding-right: 30px;
 }
 
 .data {
@@ -307,12 +307,18 @@ body {
     opacity: 0;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 650px) {
     .grid-container {
         grid-template-columns: 1fr;
     }
     .menu, .grid-section, .copy {
         grid-column: 1;
+    }
+    .menu li:nth-child(5) a {
+        display: none;
+    }
+    .menu li:nth-child(6) a {
+        display: block;
     }
     .grid-section {
         grid-template-columns: 100px, 1fr;

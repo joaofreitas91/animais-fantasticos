@@ -2,7 +2,7 @@ export default function initAnimationScroll() {
     const sections = document.querySelectorAll('[data-anime="scroll"]');
 
     if (sections.length) {
-        const viewHeight = window.innerHeight * 0.5;
+        const viewHeight = window.innerHeight * 0.8;
         const buttonHome = document.querySelector('[data-anime="go-home"]');
 
         function animationScroll() {
@@ -20,8 +20,6 @@ export default function initAnimationScroll() {
 
                 if (isSectionVisible) {
                     section.classList.add('active');
-                } else {
-                    section.classList.remove('active');
                 }
             });
         }
