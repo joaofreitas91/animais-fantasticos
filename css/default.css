@@ -255,7 +255,6 @@ body {
 
 .map {
     grid-column: 2;
-    padding-right: 30px;
 }
 
 .data {
@@ -335,6 +334,9 @@ body {
     }
     .faq-lista, .data, .map {
         grid-column: 2/4;
+    }
+    .map {
+        padding-right: 30px;
     }
     .menu {
         margin-top: 0px;
