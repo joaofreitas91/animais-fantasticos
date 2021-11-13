@@ -3,7 +3,7 @@ export default function initModal() {
     const btnLoginDesktop = document.querySelector(
         '[data-modal="open-desktop"]'
     );
-    const btnLoginMobile = document.querySelector('[data-modal="open-mobile"]');
+    //const btnLoginMobile = document.querySelector('[data-modal="open-mobile"]');
     const btnCloseModal = document.querySelector('[data-modal="close"]');
 
     function toggle(event) {
@@ -19,6 +19,6 @@ export default function initModal() {
 
     modal.addEventListener('click', closeModalOutside);
     btnLoginDesktop.addEventListener('click', toggle);
-    btnLoginMobile.addEventListener('click', toggle);
+    //btnLoginMobile.addEventListener('click', toggle);
     btnCloseModal.addEventListener('click', toggle);
 }

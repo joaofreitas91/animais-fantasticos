@@ -1,5 +1,6 @@
 :root {
     --black: #333;
+    --gray: #222;
     --white: #faf6ed;
     --orange: #fb5;
     --tomato: #e54;
@@ -62,9 +63,9 @@ body {
     display: block;
 }
 
-.menu li:nth-child(7) a {
+/* .menu li:nth-child(7) a {
     display: none;
-}
+} */
 
 .menu li a:hover {
     border-bottom: 3px solid var(--black);
@@ -324,12 +325,12 @@ body {
     .menu li a {
         margin-right: 5px;
     }
-    .menu li:nth-child(6) a {
+    /* .menu li:nth-child(6) a {
         display: none;
-    }
-    .menu li:nth-child(7) a {
+    } */
+    /* .menu li:nth-child(7) a {
         display: block;
-    }
+    } */
     .grid-section {
         grid-template-columns: 100px, 1fr;
         grid-gap: 10px;

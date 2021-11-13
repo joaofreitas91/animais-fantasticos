@@ -19,7 +19,6 @@ export default function initTooltip() {
         }
 
         function onMouseOver(event) {
-            debugger;
             const tooltipBox = createTooltipBox(this);
 
             onMouseMove.tooltipBox = tooltipBox;
