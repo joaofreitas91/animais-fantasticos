@@ -361,3 +361,9 @@ body {
         bottom: 70px;
     }
 }
+
+@media (min-width: 650px) and (max-width: 800px) {
+    .menu {
+        grid-column: 2/5;
+    }
+}
