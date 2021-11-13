@@ -19,7 +19,9 @@ export default function initAnimationScroll() {
                 const isSectionVisible = sectionTop - viewHeight < 0;
 
                 if (isSectionVisible) {
-                    section.classList.add('active');
+                    if (!section.classList.contains('active')) {
+                        section.classList.add('active');
+                    }
                 }
             });
         }
