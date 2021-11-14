@@ -106,6 +106,21 @@ body {
     grid-column: 1/4;
 }
 
+[data-week]::after {
+    content: '';
+    display: inline-block;
+    height: 6px;
+    width: 6px;
+    margin-left: 4px;
+    border: 2px solid black;
+    border-radius: 50%;
+    background-color: var(--tomato);
+}
+
+[data-week].active::after {
+    background-color: forestgreen;
+}
+
 .animals h2 {
     font-family: 'IBM Plex Mono' monospace;
     font-size: 1rem;
